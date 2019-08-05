@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     # custom apps
     'pages.apps.PagesConfig',
+    'users.apps.UsersConfig',
     'core.apps.CoreConfig',
 ]
 
@@ -70,8 +71,12 @@ WSGI_APPLICATION = 'demo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASS'),
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -116,3 +121,6 @@ STATIC_URL = '/static/'
 
 # debug_toolbar settings
 INTERNAL_IPS = ('127.0.0.1', 'localhost',)
+
+# allauth settings
+AUTH_USER_MODEL = 'users.CustomUser'
