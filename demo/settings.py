@@ -124,3 +124,5 @@ INTERNAL_IPS = ('127.0.0.1', 'localhost',)
 
 # allauth settings
 AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
